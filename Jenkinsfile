@@ -24,11 +24,12 @@ pipeline {
 
     post {
         success {
-            echo 'Maven CI/CD pipeline completed successfully!'
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            echo 'Maven build completed successfully!'
         }
 
         failure {
-            echo 'Maven CI/CD pipeline failed!'
+            echo 'Maven build failed!'
         }
     }
 }
